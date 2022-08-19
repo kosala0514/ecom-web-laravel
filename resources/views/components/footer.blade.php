@@ -1,11 +1,8 @@
-<!-- Footer -->
 <footer class="page-footer font-small blue">
 
-    <!-- Copyright -->
     <div class="product-footer">© 2022 Copyright
       <a href="/"> ❤️ Coding</a>
     </div>
-    <!-- Copyright -->
 
   </footer>
 

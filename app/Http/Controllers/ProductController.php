@@ -25,9 +25,6 @@ class ProductController extends ParentController
         ProductFacade::status($item_id);
         return redirect()->back();
     }
-    // public function update($item_id){
-    //     return redirect()->back();
-    // }
     public function edit(Request $request){
         $response['item'] = ProductFacade::get($request['item_id']);
         return view('pages.product.edit')->with($response);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use domain\Facades\ProductFacade;
 
 class ProductController extends Controller
 {
@@ -15,8 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return $products;
+        // $products = Product::all();
+        // return $products;
+        $response['items']=ProductFacade::allActive();
+        return $response;
     }
 
     /**
