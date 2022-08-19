@@ -3,6 +3,7 @@
 namespace domain\Services;
 
 use App\Models\Product;
+use infrastructure\Facades\ImagesFacade;
 
 class ProductService{
     protected $item;
@@ -18,7 +19,12 @@ class ProductService{
     }
     public function store($data){
         // dd($data);
-        $this->item->create($data);
+        if(isset($data['images'])){
+            $image = ImagesFacade::store($data['images'], [1,2,3,4,5]);
+            $data['image_id'] = $image['created_images']->id;
+            $this->item->create($data);
+        }
+
     }
     public function delete($item_id){
         $item = $this->item->find($item_id);
@@ -26,7 +32,11 @@ class ProductService{
     }
     public function status($item_id){
         $item = $this->item->find($item_id);
-        $item->status = 1;
+        if($item->status==0){
+            $item->status = 1;
+        }else{
+            $item->status = 0;
+        }
         $item->update();
     }
     public function update(array $data, $item_id){
@@ -35,5 +45,8 @@ class ProductService{
     }
     public function edit(Product $item, $data){
         return array_merge($item->toArray(), $data);
+    }
+    public function allActive(){
+        return $this->item->allActive();
     }
 }

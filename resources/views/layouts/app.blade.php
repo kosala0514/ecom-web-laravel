@@ -13,6 +13,7 @@
         @yield('content')
 
         @include('libraries.scripts')
+        @include('components.footer')
     </body>
 </html>
 

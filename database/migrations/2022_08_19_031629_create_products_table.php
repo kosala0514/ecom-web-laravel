@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->bigInteger('image_id')->nullable();
             $table->double('price', 15, 2)->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
